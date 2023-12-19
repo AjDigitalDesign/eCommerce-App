@@ -3,15 +3,7 @@ import React from "react";
 import { Button } from "./ui/button";
 import { useShoppingCart } from "use-shopping-cart";
 import { urlFor } from "../lib/sanity";
-
-export interface ProductCart {
-  name: string;
-  price: number;
-  description: string;
-  currency: string;
-  image: any;
-  price_id: string;
-}
+import { ProductCart } from "../lib/interface";
 
 function AddToCart({
   currency,

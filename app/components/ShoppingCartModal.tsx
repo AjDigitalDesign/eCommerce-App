@@ -9,6 +9,7 @@ import {
 import Image from "next/image";
 import { useShoppingCart } from "use-shopping-cart";
 import { Button } from "./ui/button";
+import { log } from "console";
 
 function ShoppingCartModal() {
   const {
@@ -18,8 +19,20 @@ function ShoppingCartModal() {
     cartDetails,
     removeItem,
     totalPrice,
+    redirectToCheckout,
   } = useShoppingCart();
 
+  async function handleCheckoutClick(event: any) {
+    event.preventDefault();
+    try {
+      const result = await redirectToCheckout();
+      if (result?.error) {
+        console.log("result");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <div>
       <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
@@ -87,7 +100,9 @@ function ShoppingCartModal() {
             </p>
 
             <div className="mt-6">
-              <Button className="w-full">Checkout</Button>
+              <Button onClick={handleCheckoutClick} className="w-full">
+                Checkout
+              </Button>
             </div>
             <div className="flex mt-6 justify-center text-center text-sm text-gray-500">
               <p>

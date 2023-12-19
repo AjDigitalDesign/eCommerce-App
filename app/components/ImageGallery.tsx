@@ -29,6 +29,7 @@ function ImageGallery({ images }: iAppProps) {
               width={200}
               height={200}
               className="h-full w-full object-cover object-center cursor-pointer"
+              priority
               onClick={() => handleSmallImageClick(image)}
             />
           </div>
@@ -39,6 +40,7 @@ function ImageGallery({ images }: iAppProps) {
           src={urlFor(bigImage).url()}
           alt="phot"
           width={500}
+          priority
           height={500}
           className="h-full w-full object-cover object-center cursor-pointer"
         />

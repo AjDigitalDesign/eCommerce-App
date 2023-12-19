@@ -2,26 +2,22 @@
 import React from "react";
 import { Button } from "./ui/button";
 import { useShoppingCart } from "use-shopping-cart";
+import { ProductCart } from "../lib/interface";
 import { urlFor } from "../lib/sanity";
 
-export interface ProductCart {
-  name: string;
-  price: number;
-  description: string;
-  currency: string;
-  image: any;
-  price_id: string;
-}
-
-function CheckoutNow({
+export default function CheckoutNow({
   currency,
   description,
   image,
-  price,
   name,
+  price,
   price_id,
 }: ProductCart) {
-  const { addItem, handleCartClick } = useShoppingCart();
+  const { checkoutSingleItem } = useShoppingCart();
+
+  function buyNow(priceId: string) {
+    checkoutSingleItem(priceId);
+  }
 
   const product = {
     name: name,
@@ -33,13 +29,12 @@ function CheckoutNow({
   };
   return (
     <Button
+      variant="outline"
       onClick={() => {
-        addItem(product), handleCartClick();
+        buyNow(product.price_id);
       }}
     >
-      Add To Cart
+      Checkout Now
     </Button>
   );
 }
-
-export default CheckoutNow;

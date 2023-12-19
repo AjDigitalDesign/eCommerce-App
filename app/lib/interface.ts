@@ -20,3 +20,12 @@ export interface productDetail {
   description: string;
   price_id: string;
 }
+
+export interface ProductCart {
+  name: string;
+  price: number;
+  description: string;
+  currency: string;
+  image: any;
+  price_id: string;
+}
