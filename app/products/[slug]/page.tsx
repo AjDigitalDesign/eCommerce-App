@@ -69,12 +69,12 @@ async function productPage({ params }: { params: { slug: string } }) {
 
           <div className="flex gap-2.5">
             <AddToCart
+              currency="USD"
+              description={data.description}
+              image={data.images[0]}
               name={data.name}
               price={data.price}
-              description={data.description}
-              currency="USD"
-              image={data.images[0]}
-              Key={data._id}
+              key={data._id}
               price_id={data.price_id}
             />
             <Button variant={"secondary"}>Checkout</Button>
