@@ -13,7 +13,7 @@ function StripeSuccessPage() {
             Payment Done!
           </h3>
           <p className="text-gray-600 my-2">Thanks for you purchase</p>
-          <p className="my-2">Enjoy you product</p>
+          <p className="my-2">Enjoy your product</p>
           <Button asChild>
             <Link href="/">Back to Home</Link>
           </Button>
