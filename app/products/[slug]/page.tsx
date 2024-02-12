@@ -1,4 +1,5 @@
 import AddToCart from "@/app/components/AddToCart";
+import CheckoutNow from "@/app/components/CheckoutNow";
 import ImageGallery from "@/app/components/ImageGallery";
 import { Button } from "@/app/components/ui/button";
 import { productDetail } from "@/app/lib/interface";
@@ -23,6 +24,9 @@ async function getData(slug: string) {
 
   return data;
 }
+
+// Opt out of caching for all data requests in the route segment
+export const dynamic = "force-dynamic";
 
 async function productPage({ params }: { params: { slug: string } }) {
   const data: productDetail = await getData(params.slug);
@@ -77,7 +81,16 @@ async function productPage({ params }: { params: { slug: string } }) {
               key={data._id}
               price_id={data.price_id}
             />
-            <Button variant={"secondary"}>Checkout</Button>
+            <CheckoutNow
+              currency="USD"
+              description={data.description}
+              image={data.images[0]}
+              name={data.name}
+              price={data.price}
+              key={data._id}
+              price_id={data.price_id}
+            />
+            {/* <Button variant={"secondary"}>Checkout</Button> */}
           </div>
 
           <p className="mt-12 text-base text-gray-500 tracking-wide">
